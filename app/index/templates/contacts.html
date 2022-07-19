@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>-_________-</h1>
+
+<hr />
+
+<h2>Мои контакты</h2>
+
+
+    {% for contact in contact_list %}
+      <p>
+        <b>{{ contact.title }}</b> -- {% if contact.link > '' %}<a href='{{ contact.text }}'> {{ contact.link }} </a>{% else %} <span> {{ contact.text }}</span>{% endif %}
+      </p>
+    {% endfor %}
+
+
+
+{% endblock %}

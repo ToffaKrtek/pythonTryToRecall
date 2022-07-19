@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>-_________-</h1>
+
+<hr />
+
+<h2>Список добавленных в бота команд:</h2>
+
+
+    {% for command in command_list %}
+      <p>
+        {% if not command.status %}
+          <s>
+        {% endif %}
+        <b>{{ command.command }}</b> -- <span>{{ command.description }}</span>
+        {% if not command.status %}
+         </s>
+        {% endif %}
+      </p>
+    {% endfor %}
+
+
+
+{% endblock %}
