@@ -14,7 +14,7 @@ class Contact(models.Model):
     title = models.CharField(max_length=240)
     text = models.CharField(max_length=240)
     def __str__(self):
-        return self.title + '' + self.text
+        return self.title + ' -- ' + self.text
 
 class BotCommand(models.Model):
     command = models.CharField(max_length=20)
