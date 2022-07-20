@@ -7,7 +7,7 @@ class Message(models.Model):
     user_lastname = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True, blank=True)
     def __str__(self):
-        return self.user_name + ' ' + self.user_lastname + '\n' + self.text + '\n' + self.date
+        return self.user_name + ' ' + self.user_lastname + '\n' + self.text + '\n' + self.date.strftime("%d/%m/%Y, %H:%M")
 
 
 class Contact(models.Model):

@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Contact, BotCommand
+from .forms import MessageForm
 # Create your views here.
 link_text = lambda href: href.split('/')[-1]
 
@@ -33,6 +34,7 @@ def contacts(request):
         link = link_text(contact.text)
         if(link != contact.text):
             contact.link = link
+            return redirect('index')
     return render(
       request,
       'contacts.html',
@@ -41,8 +43,15 @@ def contacts(request):
     )
 
 #Форма отправки сообщения в бота
-def messageForm(request):
-    return(
-      request,
-      'message_form.html'
-    )
+def message_new(request):
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = MessageForm()
+        return render(
+                 request,
+                 'message_form.html',
+                 {'form': form}
+               )

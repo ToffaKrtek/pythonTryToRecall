@@ -3,16 +3,13 @@
 {% block content %}
 <h1>-_________-</h1>
 
-  <p>Простенький сайт на джанго, с перспективой синергии с телеграм-ботом</p>
-
-<h2>Мои контакты</h2>
 
 
-    {% for contact in contact_list %}
-      <p>
-        <b>{{ contact.title }}</b> -- {% if contact.link > '' %}<a href='{{ contact.text }}'> {{ contact.link }} </a>{% else %} <span> {{ contact.text }}</span>{% endif %}
-      </p>
-    {% endfor %}
+<h2>Связаться со мной</h2>
+<form method="POST" class="message-form">{% csrf_token %}
+  {{ form.as_p }}
+  <button type='submit' class="save btn btn-default">Отправить</button>
+</form>
 
 
 
