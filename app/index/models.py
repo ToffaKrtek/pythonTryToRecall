@@ -2,12 +2,12 @@ from django.db import models
 
 # Create your models here.
 class Message(models.Model):
-    text = models.CharField(max_length=240)
+    text = models.CharField(max_length=440)
     user_name = models.CharField(max_length=100)
-    user_lastname = models.CharField(max_length=100)
+    contact = models.CharField(max_length=200)
     date = models.DateTimeField(auto_now_add=True, blank=True)
     def __str__(self):
-        return self.user_name + ' ' + self.user_lastname + '\n' + self.text + '\n' + self.date.strftime("%d/%m/%Y, %H:%M")
+        return self.user_name + ' ' + self.contact + '\n' + self.text + '\n' + self.date.strftime("%d/%m/%Y, %H:%M")
 
 
 class Contact(models.Model):

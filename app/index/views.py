@@ -34,7 +34,6 @@ def contacts(request):
         link = link_text(contact.text)
         if(link != contact.text):
             contact.link = link
-            return redirect('index')
     return render(
       request,
       'contacts.html',
@@ -48,6 +47,7 @@ def message_new(request):
         form = MessageForm(request.POST)
         if form.is_valid():
             form.save()
+        return redirect('index')
     else:
         form = MessageForm()
         return render(
